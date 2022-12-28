@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1066412017640",
+    "project_id": "nassem-c58fa",
+    "storage_bucket": "nassem-c58fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066412017640:android:46e434e6b353047e20865d",
+        "android_client_info": {
+          "package_name": "com.nassem.nassem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066412017640-jtlkv640g7aatv0r2hn50vuol68t4u3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCrbYZ6vv9lM7zX2Nk9ruWwDvjlbjDODo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066412017640-jtlkv640g7aatv0r2hn50vuol68t4u3j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
