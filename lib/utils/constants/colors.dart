@@ -3,7 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xffD68572);
+  static const Color primary = Color.fromRGBO(214, 133, 114, 1);
+  static const Color grey = Color(0xff666666);
   static const Color greenColor = Color(0xff25D366);
   static const Color yellowColor = Color(0xffEBBC2E);
   static const Color yellowWithOpacityColor = Color(0xffFDF9EC);

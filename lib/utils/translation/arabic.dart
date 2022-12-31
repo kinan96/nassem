@@ -1,4 +1,6 @@
 final Map<String, String> ar = {
+  "order": "طلب",
+  "total": "الإجمالي",
   "welcome": "مرحباً بك",
   "delivery_in_progress": "جاري التوصيل",
   "stalled_requests": "طلبات متعثرة",

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nassem/utils/custom_widgets/custom_app_image.dart';
 import '../constants/colors.dart';
 import '../constants/styles_and_themes.dart';
 import '../custom_helpers/validators.dart';
@@ -15,6 +17,7 @@ class CustomTextFormField extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixWidget;
   final Widget? prefixWidget;
+  final String? svgIconAsset;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool enabled;
@@ -40,6 +43,7 @@ class CustomTextFormField extends StatefulWidget {
   final Color? textColor;
   const CustomTextFormField({
     this.controller,
+    this.svgIconAsset,
     this.textAlign,
     this.padding,
     this.textColor,
@@ -241,7 +245,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   fontSize: 12,
                   fontWeight: FontWeight.w600),
               suffixIcon: !widget.isPassword
-                  ? (widget.suffixIcon)
+                  ? (widget.svgIconAsset == null
+                      ? widget.suffixIcon
+                      : CustomImage(
+                          svgAsset: widget.svgIconAsset,
+                          height: 20,
+                          padding: const EdgeInsets.all(12),
+                          color: AppColors.unSelectedGreyContainer,
+                        ))
                   : IconButton(
                       onPressed: () {
                         if (mounted) {
@@ -256,8 +267,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       },
                       icon: Icon(
                         _hidePassword == true
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                            ? CupertinoIcons.eye_slash
+                            : Icons.remove_red_eye_outlined,
                         color: AppColors.unSelectedGreyContainer,
                       ),
                       iconSize: 20,

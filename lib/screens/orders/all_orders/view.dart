@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/all_orders/controller.dart';
-import 'package:nassem/screens/auth/login/view.dart';
+import 'package:nassem/screens/notifications/notification_icon/notification_icon.dart';
+import 'package:nassem/screens/orders/all_orders/controller.dart';
+import 'package:nassem/screens/orders/widgets/order_card.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_screen.dart';
 import 'package:nassem/utils/custom_widgets/custom_button.dart';
 import 'package:nassem/utils/custom_widgets/custom_text.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import '../../utils/constants/colors.dart';
+import '../../../utils/constants/colors.dart';
 
 class AllOrders extends StatefulWidget {
   const AllOrders({super.key});
@@ -21,7 +22,7 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
   late TabController tabController;
   @override
   void initState() {
-    tabController = TabController(vsync: this, length: 3);
+    tabController = TabController(vsync: this, initialIndex: 0, length: 3);
     super.initState();
   }
 
@@ -56,19 +57,16 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                     const SizedBox(
                       width: 10,
                     ),
-                    CustomButton(
-                      buttonType: ButtonType.icon,
-                      onPressed: () {},
-                      iconColor: AppColors.primary,
-                      svgImageIcon: "assets/images/notification-bing.svg",
-                    ),
+                    const NotificationIcon(),
                     const SizedBox(
                       width: 10,
                     ),
                     CustomButton(
                       buttonType: ButtonType.icon,
                       iconColor: AppColors.primary,
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.searchWithBarcode();
+                      },
                       svgImageIcon: "assets/images/scan-barcode.svg",
                     )
                   ],
@@ -81,6 +79,10 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                   child: TabBar(
                       labelPadding: const EdgeInsets.symmetric(horizontal: 20),
                       controller: tabController,
+                      onTap: (value) {
+                        controller.orderTypeIndex = value;
+                        controller.update();
+                      },
                       labelColor: AppColors.primary,
                       unselectedLabelColor: AppColors.blackGrey,
                       isScrollable: true,
@@ -105,13 +107,23 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                         )
                       ]),
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
                 Expanded(
                     child: SmartRefresher(
                   controller: controller.refreshController,
                   scrollController: controller.scrollController,
                   child: ListView(
                     controller: controller.scrollController,
-                    children: [],
+                    children: List.generate(
+                        10,
+                        (index) => Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: OrderCard(
+                                orderTypeId: controller.orderTypeIndex,
+                              ),
+                            )),
                   ),
                 ))
               ],

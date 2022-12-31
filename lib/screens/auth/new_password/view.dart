@@ -29,7 +29,7 @@ class NewPassword extends StatelessWidget {
                 const SizedBox(
                   height: 70,
                 ),
-                AppLogo(),
+                const AppLogo(),
                 const SizedBox(
                   height: 10,
                 ),

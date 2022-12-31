@@ -1,5 +1,7 @@
 final Map<String, String> en = {
+  "order": "Order",
   "welcome": "Welcome",
+  "total": "Total",
   "delivery_in_progress": "Delivery is in progress",
   "stalled_requests": "Stalled requests",
   "delivered": "Delivered",

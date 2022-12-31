@@ -12,6 +12,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   #UI Packages
+  syncfusion_flutter_charts: ^20.4.41
+  flutter_slidable: ^2.0.0
   tab_indicator_styler: ^2.0.0
   dropdown_search: ^5.0.3
   pin_code_fields: ^7.4.0

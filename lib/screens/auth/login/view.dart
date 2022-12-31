@@ -51,10 +51,7 @@ class Login extends StatelessWidget {
                   ),
                   CustomTextFormField(
                     label: "email".tr,
-                    suffixIcon: const CustomImage(
-                      svgAsset: "assets/images/sms.svg",
-                      padding: EdgeInsets.all(12),
-                    ),
+                    svgIconAsset: "assets/images/sms.svg",
                     validator: emailValidate,
                     controller: controller.emailCTL,
                   ),

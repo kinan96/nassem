@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/all_orders/view.dart';
+import 'package:nassem/screens/orders/all_orders/view.dart';
 import 'package:nassem/screens/home/controller.dart';
 import 'package:nassem/screens/menu/view.dart';
 import 'package:nassem/screens/wallet/view.dart';
