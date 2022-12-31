@@ -65,9 +65,7 @@ class AllNotificationsController extends GetxController {
             nextUrl = null;
             update();
           });
-    } catch (e) {
-      print(e);
-    }
+    } catch (_) {}
   }
 
   markAsRead(int id) async {
@@ -78,9 +76,7 @@ class AllNotificationsController extends GetxController {
         dontShowMessage: true,
         body: {},
       );
-    } catch (e) {
-      print(e);
-    }
+    } catch (_) {}
   }
 
   deleteNotification(int index) async {
@@ -94,9 +90,7 @@ class AllNotificationsController extends GetxController {
             notifications?.removeAt(index);
             update();
           });
-    } catch (e) {
-      print(e);
-    }
+    } catch (_) {}
   }
 
   readNotification(int index) async {
@@ -113,7 +107,5 @@ class AllNotificationsController extends GetxController {
     readNotification(index);
   }
 
-  static onClickFCMNotification(RemoteMessage remoteMessage) async {
-    NotificationModel noti = NotificationModel.fromJson(remoteMessage.data);
-  }
+  static onClickFCMNotification(RemoteMessage remoteMessage) async {}
 }

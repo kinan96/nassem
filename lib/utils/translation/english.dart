@@ -111,7 +111,6 @@ final Map<String, String> en = {
   "find_product_here": "Find a product here",
   "create_new_invoice": "Create a new invoice",
   "branch": "Branch",
-  "cash": "Cash",
   "online": "Online",
   "warehouse": "Warehouse",
   "selling_point": "Selling point",

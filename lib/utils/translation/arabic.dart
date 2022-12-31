@@ -109,7 +109,6 @@ final Map<String, String> ar = {
   "find_product_here": "ابحث عن منتج هنا",
   "create_new_invoice": "إنشاء فاتورة جديدة",
   "branch": "الفرع",
-  "cash": "نقدي",
   "online": "شبكة",
   "warehouse": "المستودع",
   "selling_point": "نقطة البيع",

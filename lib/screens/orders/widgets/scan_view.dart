@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/home/controller.dart';
 import 'package:nassem/screens/orders/all_orders/controller.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_screen.dart';
 import 'package:scan/scan.dart';

@@ -1,4 +1,3 @@
-import 'package:ansi_logger/ansi_logger.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

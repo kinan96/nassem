@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:nassem/screens/auth/forget_password/view.dart';
 import 'package:nassem/screens/home/view.dart';
 import 'package:nassem/utils/custom_helpers/validators.dart';
-import 'package:nassem/utils/custom_widgets/custom_app_image.dart';
 import '../../../utils/custom_widgets/app_logo.dart';
 import '../../../utils/custom_widgets/custom_app_screen.dart';
 import '../../../utils/custom_widgets/custom_button.dart';

@@ -97,8 +97,6 @@ class NotificationIconController extends GetxController {
             nextUrl = null;
             update();
           });
-    } catch (e) {
-      print(e);
-    }
+    } catch (_) {}
   }
 }

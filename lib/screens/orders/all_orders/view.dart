@@ -48,7 +48,7 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                           color: AppColors.blackGrey,
                           fontSize: 12,
                         ),
-                        CustomText(
+                        const CustomText(
                           "فيصل",
                           color: AppColors.primary,
                         )

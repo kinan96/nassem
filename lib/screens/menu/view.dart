@@ -3,9 +3,8 @@ import 'package:get/get.dart';
 import 'package:nassem/screens/menu/widgets.dart/app_version.dart';
 import 'package:nassem/utils/constants/colors.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_bar.dart';
-import 'package:nassem/utils/custom_widgets/custom_app_image.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_screen.dart';
-import 'package:nassem/utils/custom_widgets/custom_button.dart';
+
 import 'package:nassem/utils/custom_widgets/custom_text.dart';
 
 import 'widgets.dart/menu_button.dart';
