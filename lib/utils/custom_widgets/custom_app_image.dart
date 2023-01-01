@@ -55,7 +55,7 @@ class CustomImage extends StatelessWidget {
             ? placeHolder ??
                 Center(
                     child: CustomShimmerBuilder(
-                        child: Image.asset("assets/images/logo.png")))
+                        child: SvgPicture.asset("assets/images/logo.svg")))
             : fileImage != null
                 ? ClipRRect(
                     borderRadius: borderRadius ?? BorderRadius.zero,
@@ -82,20 +82,21 @@ class CustomImage extends StatelessWidget {
                             ClipRRect(
                               borderRadius: borderRadius ?? BorderRadius.zero,
                               child: Image.asset(
-                                assetImage ?? "assets/images/logo.png",
+                                assetImage!,
                                 width: width,
                                 color: color,
                                 height: height,
                                 fit: fit,
                                 errorBuilder: (context, e, s) =>
                                     CustomShimmerBuilder(
-                                        child: Image.asset(
-                                            "assets/images/logo.png")),
+                                        child: SvgPicture.asset(
+                                            "assets/images/logo.svg")),
                               ),
                             )),
       );
     } catch (e) {
-      return CustomShimmerBuilder(child: Image.asset("assets/images/logo.png"));
+      return CustomShimmerBuilder(
+          child: SvgPicture.asset("assets/images/logo.svg"));
     }
   }
 
@@ -106,8 +107,8 @@ class CustomImage extends StatelessWidget {
       color: color,
       height: height,
       fit: fit,
-      errorBuilder: (context, e, s) =>
-          CustomShimmerBuilder(child: Image.asset("assets/images/logo.png")),
+      errorBuilder: (context, e, s) => CustomShimmerBuilder(
+          child: SvgPicture.asset("assets/images/logo.svg")),
     );
   }
 
@@ -117,14 +118,14 @@ class CustomImage extends StatelessWidget {
         width: width,
         height: height,
         color: color,
-        errorWidget: (context, e, s) =>
-            CustomShimmerBuilder(child: Image.asset("assets/images/logo.png")),
+        errorWidget: (context, e, s) => CustomShimmerBuilder(
+            child: SvgPicture.asset("assets/images/logo.svg")),
         placeholder: (context, url) {
           return ClipRRect(
             borderRadius: borderRadius ?? BorderRadius.zero,
             child: placeHolder ??
                 CustomShimmerBuilder(
-                    child: Image.asset("assets/images/logo.png")),
+                    child: SvgPicture.asset("assets/images/logo.svg")),
           );
         },
         imageBuilder: (context, imageP) => SizedBox(
@@ -139,7 +140,7 @@ class CustomImage extends StatelessWidget {
                   width: width,
                   height: height,
                   errorBuilder: (context, e, s) => CustomShimmerBuilder(
-                      child: Image.asset("assets/images/logo.png")),
+                      child: SvgPicture.asset("assets/images/logo.svg")),
                 ),
               ),
             ));

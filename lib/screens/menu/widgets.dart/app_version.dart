@@ -22,7 +22,7 @@ class AppVersionWidget extends StatelessWidget {
             ),
             snapshot.hasData
                 ? CustomText(
-                    snapshot.data == "" ? "V1.0.0" : (snapshot.data ?? ""),
+                    snapshot.data ?? "",
                     color: AppColors.grey,
                     textAlign: TextAlign.center,
                     padding: const EdgeInsets.only(bottom: 20, top: 5),
