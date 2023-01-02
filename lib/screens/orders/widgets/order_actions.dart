@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/orders/widgets/falt_order_sheet.dart';
+import 'package:nassem/screens/orders/order_page/controller.dart';
+import 'package:nassem/screens/orders/widgets/falt_order_sheet/view.dart';
 import 'package:nassem/utils/constants/bottom_sheet.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -20,7 +21,9 @@ class OrderActionsRow extends StatelessWidget {
             child: CustomButton(
                 buttonType: ButtonType.text,
                 onPressed: () {
-                  showCustomBottomSheet(child: const SentOrderSheet());
+                  showCustomBottomSheet(
+                    child: const SentOrderSheet(),
+                  );
                 },
                 text: "sent_delivered_handed".tr)),
         const SizedBox(
@@ -32,7 +35,10 @@ class OrderActionsRow extends StatelessWidget {
                 bgColor: AppColors.yellowWithOpacityColor,
                 textColor: AppColors.yellowColor,
                 onPressed: () {
-                  showCustomBottomSheet(child: const FaltOrderSheet());
+                  showCustomBottomSheet(
+                    child: const FaltOrderSheet(),
+                    title: "falt_orders".tr,
+                  );
                 },
                 text: "falt_orders".tr)),
       ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:nassem/screens/orders/model.dart';
 import 'package:nassem/screens/orders/widgets/order_actions.dart';
 import 'package:nassem/screens/orders/widgets/product_list.dart';
@@ -186,10 +187,14 @@ class OrderPage extends StatelessWidget {
           ),
           Table(
             children: [
-              _orderPriceRow("the_total".tr, 100),
-              _orderPriceRow("delivery_charge".tr, 40),
-              _orderPriceRow("${"tax".tr} (15%)", 20),
-              _orderPriceRow("total".tr, 160),
+              _orderPriceRow("the_total".tr, 100.toStringAsFixed(2)),
+              _orderPriceRow("delivery_charge".tr, 40.toStringAsFixed(2)),
+              _orderPriceRow("${"tax".tr} (15%)", 20.toStringAsFixed(2)),
+              _orderPriceRow("total".tr, 160.toStringAsFixed(2)),
+              if (orderTypeId == OrderTypeId.delivered)
+                _orderPriceRow(
+                    "delivered".tr, DateFormat.Hm().format(DateTime.now()),
+                    isNotPrice: true)
             ],
           ),
           SizedBox(
@@ -220,7 +225,7 @@ class OrderPage extends StatelessWidget {
     );
   }
 
-  TableRow _orderPriceRow(String title, double price) {
+  TableRow _orderPriceRow(String title, String value, {bool? isNotPrice}) {
     return TableRow(
       children: [
         CustomText(
@@ -228,7 +233,7 @@ class OrderPage extends StatelessWidget {
           color: AppColors.grey,
         ),
         CustomText(
-          "${price.toStringAsFixed(2)} ${"riyal".tr}",
+          "$value ${isNotPrice == true ? "" : "riyal".tr}",
           color: AppColors.black,
         )
       ],

@@ -35,9 +35,12 @@ class MenuButton extends StatelessWidget {
             width: 15,
           ),
           Expanded(
-              child: CustomText(
-            text,
-            color: color ?? AppColors.grey,
+              child: Hero(
+            tag: text,
+            child: CustomText(
+              text,
+              color: color ?? AppColors.grey,
+            ),
           ))
         ],
       ),

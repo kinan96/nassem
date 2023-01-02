@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nassem/screens/auth/account/view.dart';
+import 'package:nassem/screens/menu/terms/view.dart';
 import 'package:nassem/screens/menu/widgets.dart/app_version.dart';
 import 'package:nassem/utils/constants/colors.dart';
+import 'package:nassem/utils/custom_helpers/logout.dart';
+import 'package:nassem/utils/custom_helpers/when_change_lang.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_bar.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_screen.dart';
 
 import 'package:nassem/utils/custom_widgets/custom_text.dart';
 
+import 'about/view.dart';
 import 'widgets.dart/menu_button.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -31,7 +36,9 @@ class MenuScreen extends StatelessWidget {
                   height: 20,
                 ),
                 MenuButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(Account());
+                  },
                   text: "personal_account".tr,
                   svgAsset: "assets/images/profile.svg",
                 ),
@@ -39,7 +46,9 @@ class MenuScreen extends StatelessWidget {
                   height: 10,
                 ),
                 MenuButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    whenChangeLang();
+                  },
                   text: "change_lang".tr,
                   svgAsset: "assets/images/language-circle.svg",
                 ),
@@ -47,7 +56,9 @@ class MenuScreen extends StatelessWidget {
                   height: 10,
                 ),
                 MenuButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(const About());
+                  },
                   text: "about".tr,
                   svgAsset: "assets/images/information.svg",
                 ),
@@ -55,7 +66,9 @@ class MenuScreen extends StatelessWidget {
                   height: 10,
                 ),
                 MenuButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(const Terms());
+                  },
                   text: "terms".tr,
                   svgAsset: "assets/images/security-safe.svg",
                 ),
@@ -63,7 +76,9 @@ class MenuScreen extends StatelessWidget {
                   height: 10,
                 ),
                 MenuButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    logout(context);
+                  },
                   color: AppColors.red,
                   text: "sign_out".tr,
                   svgAsset: "assets/images/logout.svg",

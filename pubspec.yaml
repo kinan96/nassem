@@ -25,6 +25,10 @@ dependencies:
   shimmer: ^2.0.0
   blur: ^3.1.0
   #Helpers
+  awesome_dialog: ^3.0.2
+  file_picker: ^5.2.4
+  image_cropper: ^3.0.1
+  image_picker: ^0.8.5
   scan: ^1.6.0
   geocode: ^1.0.2
   google_maps_flutter: ^2.2.2

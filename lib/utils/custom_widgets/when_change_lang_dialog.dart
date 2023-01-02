@@ -26,7 +26,7 @@ class WhenChangeLangDialog extends StatelessWidget {
                 child: Row(
                   children: [
                     const CustomImage(
-                      assetImage: "assets/images/ksaflag.png",
+                      svgAsset: "assets/images/sa.svg",
                       height: 20,
                       fit: BoxFit.fitHeight,
                     ),
@@ -39,7 +39,7 @@ class WhenChangeLangDialog extends StatelessWidget {
                           ? Icons.radio_button_checked_outlined
                           : Icons.radio_button_off,
                       color: Get.locale?.languageCode == "ar"
-                          ? AppColors.secondary
+                          ? AppColors.primary
                           : AppColors.unSelectedGreyContainer,
                     )
                   ],
@@ -60,7 +60,7 @@ class WhenChangeLangDialog extends StatelessWidget {
                 child: Row(
                   children: [
                     const CustomImage(
-                      assetImage: "assets/images/ukflag.png",
+                      svgAsset: "assets/images/us.svg",
                       height: 20,
                       fit: BoxFit.fitHeight,
                     ),
@@ -73,7 +73,7 @@ class WhenChangeLangDialog extends StatelessWidget {
                           ? Icons.radio_button_checked_outlined
                           : Icons.radio_button_off,
                       color: Get.locale?.languageCode == "en"
-                          ? AppColors.secondary
+                          ? AppColors.primary
                           : AppColors.unSelectedGreyContainer,
                     )
                   ],
