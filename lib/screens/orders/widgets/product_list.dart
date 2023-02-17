@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nassem/screens/orders/model.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_image.dart';
 import 'package:nassem/utils/custom_widgets/custom_price_row.dart';
 import 'package:nassem/utils/custom_widgets/custom_text.dart';
 
 class ProductList extends StatelessWidget {
-  const ProductList({super.key});
+  final OrderDetail? orderDetail;
+  const ProductList({super.key, this.orderDetail});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CustomImage(
-          urlImage:
-              "https://i.picsum.photos/id/297/536/354.jpg?hmac=FUNXwbNpJpjLHIDJ5skSQWj4ETqgiWEWx6pSGYCNyp4",
+          urlImage: orderDetail?.productDetails?.images?.first.path ?? "",
           width: 70,
           height: 70,
           borderRadius: BorderRadius.circular(10),
@@ -22,13 +24,16 @@ class ProductList extends StatelessWidget {
         ),
         Expanded(
             child: CustomText(
-          "بوكيه ورد جميل",
+          (Get.locale?.languageCode == "ar"
+                  ? orderDetail?.productDetails?.arName
+                  : orderDetail?.productDetails?.enName) ??
+              "",
         )),
         const SizedBox(
           width: 10,
         ),
         PriceRow(
-          price: 100,
+          priceStr: orderDetail?.total,
         )
       ],
     );

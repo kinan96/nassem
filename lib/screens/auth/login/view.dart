@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/auth/forget_password/view.dart';
+import 'package:nassem/screens/auth/confirmation/view.dart';
 import 'package:nassem/screens/home/view.dart';
 import 'package:nassem/utils/custom_helpers/validators.dart';
 import '../../../utils/custom_widgets/app_logo.dart';
@@ -8,6 +8,7 @@ import '../../../utils/custom_widgets/custom_app_screen.dart';
 import '../../../utils/custom_widgets/custom_button.dart';
 import '../../../utils/custom_widgets/custom_text.dart';
 import '../../../utils/custom_widgets/custom_text_form_field.dart';
+import '../forget_password/view.dart';
 import 'controller.dart';
 
 class Login extends StatelessWidget {
@@ -78,7 +79,7 @@ class Login extends StatelessWidget {
                   CustomButton(
                     buttonType: ButtonType.text,
                     onPressed: () {
-                      Get.to(const HomeScreen());
+                      controller.login(formKey);
                     },
                     text: "login".tr,
                   )

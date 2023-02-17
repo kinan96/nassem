@@ -11,7 +11,7 @@ import 'package:nassem/screens/auth/login/view.dart';
 import '../../public_controllers/auth_controller.dart';
 import '../constants/alerts.dart';
 import '../translation/translation.dart';
-import 'dio_interceptor.dart';
+import 'package:awesome_dio_interceptor/awesome_dio_interceptor.dart';
 
 class HttpClient {
   HttpClient({
@@ -24,7 +24,8 @@ class HttpClient {
     await remoteConfig.fetch();
     await remoteConfig.activate();
     String? url;
-    url = remoteConfig.getString("base_url");
+    url = "https://naseem-api.rowadtqnee.online/public/api";
+    // remoteConfig.getString("base_url");
     return HttpClient(
         baseUrl: url.isEmpty || url.contains("http") == false ? "" : url);
   }
@@ -48,12 +49,20 @@ class HttpClient {
 
   bool? isUploading;
 
-  Dio dio = Dio();
-  // Dio get dio {
-  //   Dio dioo = dioC..interceptors.add(DioInterceptor());
+  Dio dioc = Dio();
+  Dio get dio {
+    Dio dioo = dioc
+      ..interceptors.add(
+        AwesomeDioInterceptor(
+          logRequestTimeout: false,
+          logRequestHeaders: true,
+          logResponseHeaders: false,
+          logger: debugPrint,
+        ),
+      );
 
-  //   return dioo;
-  // }
+    return dioo;
+  }
 
   Future<Response?> postData({
     @required String? url,
@@ -90,12 +99,12 @@ class HttpClient {
         if (dontShowLoading == null || dontShowLoading == false) {
           MyAppController.showLoading();
         }
-        if (enableLog) {
-          dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
-            ..interceptors.add(DioInterceptor());
-        } else {
-          dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
-        }
+        // if (enableLog) {
+        //   dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
+        //     ..interceptors.add(DioInterceptor());
+        // } else {
+        //   dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
+        // }
         Response response = await dio.post(
           fullUrl == null
               ? "$baseUrl/$url"
@@ -215,12 +224,12 @@ class HttpClient {
         if (dontShowLoading == null || dontShowLoading == false) {
           MyAppController.showLoading();
         }
-        if (enableLog) {
-          dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
-            ..interceptors.add(DioInterceptor());
-        } else {
-          dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
-        }
+        // if (enableLog) {
+        //   dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
+        //     ..interceptors.add(DioInterceptor());
+        // } else {
+        //   dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
+        // }
         Response response = await dio.put(
           "$baseUrl/$url",
           data: body,
@@ -337,12 +346,12 @@ class HttpClient {
         if (dontShowLoading == null || dontShowLoading == false) {
           MyAppController.showLoading();
         }
-        if (enableLog) {
-          dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
-            ..interceptors.add(DioInterceptor());
-        } else {
-          dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
-        }
+        // if (enableLog) {
+        //   dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
+        //     ..interceptors.add(DioInterceptor());
+        // } else {
+        //   dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
+        // }
         Response response = await dio.get(
           fullUrl == null
               ? "$baseUrl/$url"
@@ -456,12 +465,12 @@ class HttpClient {
         if (dontShowLoading == null || dontShowLoading == false) {
           MyAppController.showLoading();
         }
-        if (enableLog) {
-          dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
-            ..interceptors.add(DioInterceptor());
-        } else {
-          dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
-        }
+        // if (enableLog) {
+        //   dio = dio.interceptors.contains(DioInterceptor()) ? dio : dio
+        //     ..interceptors.add(DioInterceptor());
+        // } else {
+        //   dio = dio..interceptors.removeWhere((e) => e == DioInterceptor());
+        // }
         Response response = await dio.delete(
           "$baseUrl/$url",
           queryParameters: queryParameters,

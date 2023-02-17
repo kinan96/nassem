@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/orders/order_page/controller.dart';
-import 'package:nassem/screens/orders/widgets/falt_order_sheet/view.dart';
+import 'package:nassem/screens/orders/model.dart';
+import 'package:nassem/screens/orders/widgets/order_sheets/falt_order_sheet.dart';
 import 'package:nassem/utils/constants/bottom_sheet.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/custom_widgets/custom_button.dart';
-import 'sent_order_sheet.dart';
+import 'order_sheets/sent_order_sheet.dart';
 
 class OrderActionsRow extends StatelessWidget {
+  final OrderModel? orderModel;
   const OrderActionsRow({
     Key? key,
+    required this.orderModel,
   }) : super(key: key);
 
   @override
@@ -22,7 +24,10 @@ class OrderActionsRow extends StatelessWidget {
                 buttonType: ButtonType.text,
                 onPressed: () {
                   showCustomBottomSheet(
-                    child: const SentOrderSheet(),
+                    maxHeight: Get.height / (4 / 3),
+                    child: SentOrderSheet(
+                      orderModel: orderModel,
+                    ),
                   );
                 },
                 text: "sent_delivered_handed".tr)),
@@ -36,7 +41,10 @@ class OrderActionsRow extends StatelessWidget {
                 textColor: AppColors.yellowColor,
                 onPressed: () {
                   showCustomBottomSheet(
-                    child: const FaltOrderSheet(),
+                    maxHeight: Get.height / (4 / 3),
+                    child: FaltOrderSheet(
+                      orderModel: orderModel,
+                    ),
                     title: "falt_orders".tr,
                   );
                 },

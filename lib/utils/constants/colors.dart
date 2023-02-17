@@ -47,8 +47,8 @@ class AppColors {
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
       colors: [
-        blackColorForGradient1,
-        blackColorForGradient2,
+        primary,
+        secondary,
       ]);
 }
 

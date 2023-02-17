@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nassem/public_controllers/auth_controller.dart';
 import 'package:nassem/screens/notifications/notification_icon/notification_icon.dart';
 import 'package:nassem/screens/orders/all_orders/controller.dart';
 import 'package:nassem/screens/orders/widgets/order_card.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_screen.dart';
 import 'package:nassem/utils/custom_widgets/custom_button.dart';
+import 'package:nassem/utils/custom_widgets/custom_empty_widget.dart';
 import 'package:nassem/utils/custom_widgets/custom_text.dart';
+import 'package:nassem/utils/shimmers/custom_shimmer_builder.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
@@ -48,10 +51,14 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                           color: AppColors.blackGrey,
                           fontSize: 12,
                         ),
-                        const CustomText(
-                          "فيصل",
-                          color: AppColors.primary,
-                        )
+                        GetBuilder<AuthController>(
+                            init: AuthController(),
+                            builder: (auth) {
+                              return CustomText(
+                                auth.userModel?.name ?? "",
+                                color: AppColors.primary,
+                              );
+                            })
                       ],
                     )),
                     const SizedBox(
@@ -82,6 +89,7 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                       onTap: (value) {
                         controller.orderTypeIndex = value;
                         controller.update();
+                        controller.getOrders();
                       },
                       labelColor: AppColors.primary,
                       unselectedLabelColor: AppColors.blackGrey,
@@ -113,17 +121,42 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                 Expanded(
                     child: SmartRefresher(
                   controller: controller.refreshController,
+                  enablePullUp: true,
                   scrollController: controller.scrollController,
+                  onRefresh: () {
+                    controller.getOrders();
+                  },
+                  onLoading: () {
+                    if (controller.allOrdersModel?.paginate?.nextPageUrl !=
+                            null &&
+                        controller.allOrdersModel?.paginate?.nextPageUrl !=
+                            "") {
+                      controller.getOrders(
+                          next:
+                              controller.allOrdersModel?.paginate?.nextPageUrl);
+                    }
+                  },
                   child: ListView(
                     controller: controller.scrollController,
-                    children: List.generate(
-                        10,
-                        (index) => Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: OrderCard(
-                                orderTypeId: controller.orderTypeIndex,
-                              ),
-                            )),
+                    children: controller.orders?.isEmpty == true
+                        ? const [CustomEmptyWidget()]
+                        : List.generate(
+                            controller.orders?.length ?? 5,
+                            (index) => controller.orders == null
+                                ? CustomShimmerBuilder(
+                                    child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 10),
+                                    child: OrderCard(
+                                      orderTypeId: controller.orderTypeIndex,
+                                    ),
+                                  ))
+                                : Padding(
+                                    padding: const EdgeInsets.only(bottom: 10),
+                                    child: OrderCard(
+                                      orderTypeId: controller.orderTypeIndex,
+                                      orderModel: controller.orders?[index],
+                                    ),
+                                  )),
                   ),
                 ))
               ],

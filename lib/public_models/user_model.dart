@@ -10,83 +10,56 @@ String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
   UserModel({
-    this.token,
-    this.expiresAt,
-    this.financialYear,
-    this.userInfo,
-  });
-
-  String? token;
-  String? expiresAt;
-  String? financialYear;
-  UserInfo? userInfo;
-
-  factory UserModel.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      UserModel(
-        token: json["token"],
-        expiresAt: json["expiresAt"],
-        financialYear: json["financialYear"],
-        userInfo: UserInfo.fromJson(json["userInfo"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "token": token,
-        "expiresAt": expiresAt,
-        "financialYear": financialYear,
-        "userInfo": userInfo?.toJson(),
-      };
-}
-
-class UserInfo {
-  UserInfo({
-    this.id,
-    this.userName,
-    this.nameArabic,
-    this.nameEnglish,
-    this.organizationId,
-    this.branchId,
-    this.cashboxId,
     this.email,
-    this.mobile,
-    this.isAdmin = false,
+    this.branchEmail,
+    this.lat,
+    this.lng,
+    this.address,
+    this.isSuspended = false,
+    this.suspendReason,
+    this.image,
+    this.token,
+    this.name,
+    this.phone,
   });
+  String? name;
+  String? phone;
 
-  String? id;
-  String? userName;
-  String? nameArabic;
-  String? nameEnglish;
-  String? organizationId;
-  String? branchId;
-  String? cashboxId;
   String? email;
-  String? mobile;
-  bool isAdmin;
+  String? branchEmail;
+  String? lat;
+  String? lng;
+  String? address;
+  bool isSuspended;
+  String? suspendReason;
+  String? image;
+  String? token;
 
-  factory UserInfo.fromJson(Map<String, dynamic> json) => UserInfo(
-        id: json["id"],
-        userName: json["userName"],
-        nameArabic: json["nameArabic"],
-        nameEnglish: json["nameEnglish"],
-        organizationId: json["organizationID"],
-        branchId: json["branchID"],
-        cashboxId: json["cashboxID"],
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         email: json["email"],
-        mobile: json["mobile"],
-        isAdmin: json["isAdmin"].toString() == "true",
+        name: json["name"],
+        phone: json["phone"],
+        branchEmail: json["branch_email"],
+        lat: json["lat"],
+        lng: json["lng"],
+        address: json["address"],
+        isSuspended: json["is_suspended"].toString() == "1",
+        suspendReason: json["suspend_reason"],
+        image: json["image"],
+        token: json["token"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "userName": userName,
-        "nameArabic": nameArabic,
-        "nameEnglish": nameEnglish,
-        "organizationID": organizationId,
-        "branchID": branchId,
-        "cashboxID": cashboxId,
+        "name": name,
+        "phone": phone,
         "email": email,
-        "mobile": mobile,
-        "isAdmin": isAdmin,
+        "branch_email": branchEmail,
+        "lat": lat,
+        "lng": lng,
+        "address": address,
+        "is_suspended": isSuspended,
+        "suspend_reason": suspendReason,
+        "image": image,
+        "token": token,
       };
 }

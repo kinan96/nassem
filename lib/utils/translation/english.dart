@@ -465,8 +465,7 @@ final Map<String, String> en = {
   'phone_validate3': 'Mobile number must not be less than 10 digits ',
   'phone_validate4': "Mobile number must not contain symbols or letters",
   'send': 'Send',
-  'forget_hint':
-      "Please enter your mobile number to be able to change your password",
+  'forget_hint': "Please enter your email to be able to change your password",
   'phone_ex': 'Example : 0501234567',
   'password_ex': 'Example : 12345678',
   'password': 'Password',

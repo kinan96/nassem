@@ -46,7 +46,7 @@ class CustomEmptyWidget extends StatelessWidget {
     return Opacity(
       opacity: opacity,
       child: CustomImage(
-        assetImage: image ?? "assets/images/logo.png",
+        svgAsset: image ?? "assets/images/logo.svg",
         fit: BoxFit.contain,
         width: imageWidth ?? Get.width / 2,
       ),

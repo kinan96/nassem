@@ -12,8 +12,9 @@ import 'order_actions.dart';
 
 class OrderCard extends StatelessWidget {
   final int orderTypeId;
-
-  const OrderCard({super.key, this.orderTypeId = OrderTypeId.delivering});
+  final OrderModel? orderModel;
+  const OrderCard(
+      {super.key, this.orderModel, this.orderTypeId = OrderTypeId.delivering});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,12 @@ class OrderCard extends StatelessWidget {
         buttonType: ButtonType.outlined,
         padding: const EdgeInsets.all(10),
         onPressed: () {
-          Get.to(OrderPage(
-            orderTypeId: orderTypeId,
-          ));
+          if (orderModel != null) {
+            Get.to(OrderPage(
+              orderTypeId: orderTypeId,
+              orderModel: orderModel,
+            ));
+          }
         },
         child: Column(
           children: [
@@ -48,14 +52,14 @@ class OrderCard extends StatelessWidget {
                 Column(
                   children: [
                     CustomText(
-                      "${"order".tr} 123",
+                      "${"order".tr} ${orderModel?.id ?? ""}",
                       fontSize: 15,
                     ),
                     const SizedBox(
                       height: 5,
                     ),
                     CustomText(
-                      "120 ${"riyal".tr}",
+                      "${orderModel?.total ?? ""} ${"riyal".tr}",
                       fontSize: 15,
                       color: AppColors.primary,
                     )
@@ -73,23 +77,25 @@ class OrderCard extends StatelessWidget {
                     child: CustomTextWithIconRow(
                   expandedText: true,
                   svgImageAsset: "assets/images/wallet-money.svg",
-                  text: "payment_upon_receipt".tr,
+                  text: getPaymentMethodName(orderModel?.paymentMethod),
                 )),
-                const CustomTextWithIconRow(
+                CustomTextWithIconRow(
                   svgImageAsset: "assets/images/profile-circle.svg",
-                  text: "مصطفى باشا القديم",
+                  text: orderModel?.receiverName ?? "",
                 ),
               ],
             ),
             Offstage(
               offstage: orderTypeId != OrderTypeId.delivering,
               child: Column(
-                children: const [
-                  Padding(
+                children: [
+                  const Padding(
                     padding: EdgeInsets.all(5),
                     child: Divider(),
                   ),
-                  OrderActionsRow()
+                  OrderActionsRow(
+                    orderModel: orderModel,
+                  )
                 ],
               ),
             )

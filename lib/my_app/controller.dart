@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:ansi_logger/ansi_logger.dart';
 import 'package:fcm_config/fcm_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -46,10 +45,11 @@ class MyAppController extends GetxController {
     await checkAndUpdateAppLang();
     await checkAndUpdateAppTheme();
     await isFirstOpen();
-    SimpleAnsiLogger.log(AnsiColors.white, deviceToken.toString());
-    SimpleAnsiLogger.log(AnsiColors.green, deviceType);
-    SimpleAnsiLogger.log(AnsiColors.green, lang.toString());
-    SimpleAnsiLogger.log(AnsiColors.green, theme.toString());
+    print(deviceToken.toString());
+    print(deviceType);
+    print(lang.toString());
+    print(theme.toString());
+
     AuthController authCTL = Get.find();
     await authCTL.initAuth();
   }
@@ -63,7 +63,7 @@ class MyAppController extends GetxController {
         announcement: true,
         badge: true,
         criticalAlert: true,
-        displayInForeground: true,
+        displayInForeground: (m) => true,
         provisional: true,
         defaultAndroidChannel: const AndroidNotificationChannel(
           'high_importance_channel',
