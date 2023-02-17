@@ -42,16 +42,14 @@ class OrderSheetsController extends GetxController {
   }
 
   sendDeliveredOrder() {
+    Get.back();
+
     httpClient.postData(
       url: "delivery/delivery-order/${orderModel?.id}",
       body: {},
       onSuccess: (responseJson) {
-        Get.back();
-        Get.back();
-
         AllOrdersController allOrdersController = Get.find();
         allOrdersController.getOrders();
-        showCustomBottomSheet(child: const SuccessOrderActionSheet());
       },
     );
   }
@@ -60,6 +58,8 @@ class OrderSheetsController extends GetxController {
     if (form.currentState?.validate() == false) {
       return;
     }
+    Get.back();
+
     httpClient.postData(
       url: "delivery/miss-delivery-order/${orderModel?.id}",
       body: {
@@ -68,9 +68,6 @@ class OrderSheetsController extends GetxController {
             (index) async => convertImageToMPF(imagesPaths[index]))
       },
       onSuccess: (responseJson) {
-        Get.back();
-        Get.back();
-
         AllOrdersController allOrdersController = Get.find();
         allOrdersController.getOrders();
         showCustomBottomSheet(child: const SuccessOrderActionSheet());

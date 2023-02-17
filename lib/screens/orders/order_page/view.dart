@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:nassem/screens/orders/model.dart';
 import 'package:nassem/screens/orders/order_page/controller.dart';
 import 'package:nassem/screens/orders/widgets/order_actions.dart';
@@ -85,18 +85,22 @@ class OrderPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomText("cause_of_stumbling".tr),
-                      Container(
-                        width: Get.width,
-                        padding: const EdgeInsets.all(10),
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: AppColors.greyContainer,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: CustomText(
-                          controller.orderModel.cancelReason ?? "",
-                          color: AppColors.grey,
-                          fontSize: 12,
-                          textAlign: TextAlign.center,
+                      Offstage(
+                        offstage: controller.orderModel.cancelReason == null ||
+                            controller.orderModel.cancelReason?.isEmpty == true,
+                        child: Container(
+                          width: Get.width,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: AppColors.greyContainer,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: CustomText(
+                            controller.orderModel.cancelReason ?? "",
+                            color: AppColors.grey,
+                            fontSize: 12,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -144,8 +148,13 @@ class OrderPage extends StatelessWidget {
                       children: [
                         TextSpan(
                             text:
-                                "    ${controller.orderModel.receiverPhone ?? ""}",
-                            locale: const Locale("en", "US"),
+                                "    ${Get.locale?.languageCode == "ar" ? (controller.orderModel.receiverPhone?.replaceAll("+", "")) : (controller.orderModel.receiverPhone ?? "")}",
+                            children: Get.locale?.languageCode == "ar" &&
+                                    controller.orderModel.receiverPhone
+                                            ?.contains("+") ==
+                                        true
+                                ? [const TextSpan(text: "+")]
+                                : null,
                             style: const TextStyle(color: AppColors.grey))
                       ]),
                 ),
@@ -213,8 +222,13 @@ class OrderPage extends StatelessWidget {
                     _orderPriceRow(
                         "total".tr, controller.orderModel.total ?? ""),
                     if (orderTypeId == OrderTypeId.delivered)
-                      _orderPriceRow("delivered".tr,
-                          DateFormat.Hm().format(DateTime.now()),
+                      _orderPriceRow(
+                          "delivered".tr,
+                          controller.orderModel.deliveryDate == null
+                              ? ""
+                              : intl.DateFormat.Hm().format(
+                                  controller.orderModel.deliveryDate ??
+                                      DateTime.now()),
                           isNotPrice: true)
                   ],
                 ),
