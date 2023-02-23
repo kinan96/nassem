@@ -9,8 +9,10 @@ import '../../../utils/custom_widgets/custom_text.dart';
 
 class WalletInfoCard extends StatelessWidget {
   final int walletStatusId;
+  final WalletModel? walletModel;
   const WalletInfoCard({
     Key? key,
+    this.walletModel,
     this.walletStatusId = WalletStatusId.indebtedness,
   }) : super(key: key);
 
@@ -40,13 +42,15 @@ class WalletInfoCard extends StatelessWidget {
             padding: EdgeInsets.all(5),
             child: Divider(),
           ),
-          const PriceRow(
-            mainAxisAlignment: MainAxisAlignment.start,
-            price: 100,
-            priceSize: 18,
-            typeSize: 12,
-            color: AppColors.black,
-          )
+          walletModel == null
+              ? const LinearProgressIndicator()
+              : PriceRow(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  price: walletModel?.value,
+                  priceSize: 18,
+                  typeSize: 12,
+                  color: AppColors.black,
+                )
         ],
       ),
     );

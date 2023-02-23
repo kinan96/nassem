@@ -2,6 +2,7 @@ final Map<String, String> ar = {
   "request_status_sent": "تم ارسال حالة الطلب بنجاح",
   "sent_hint": "هل انت متأكد من ان الطلب تم توصيله؟",
   "yes": "نعم",
+  "add_image_first": "ارفق ملف واحد على الأقل أولاً",
   "no": "لا",
   "attach_file": "ارفاق ملف",
   "order_details": "تفاصيل الطلب",

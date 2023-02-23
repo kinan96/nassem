@@ -111,7 +111,7 @@ class HttpClient {
               : fullUrl.replaceAll("http:", "https:"),
           onSendProgress: onSend,
           queryParameters: queryParameters,
-          data: body ?? {},
+          data: FormData.fromMap(body ?? {}),
           options: Options(
               headers: getMyHeaders(otherHeaders: headers),
               validateStatus: (status) {

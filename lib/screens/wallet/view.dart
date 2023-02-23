@@ -42,6 +42,7 @@ class _WalletState extends State<Wallet> with TickerProviderStateMixin {
                     onTap: (value) {
                       controller.walletStatusId = value;
                       controller.update();
+                      controller.getData();
                     },
                     labelColor: AppColors.primary,
                     unselectedLabelColor: AppColors.blackGrey,
@@ -76,32 +77,43 @@ class _WalletState extends State<Wallet> with TickerProviderStateMixin {
               ),
               WalletInfoCard(
                 walletStatusId: controller.walletStatusId,
+                walletModel: controller.walletModel,
               ),
               const SizedBox(
                 height: 30,
               ),
-              Expanded(
-                  child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        width: .35, color: AppColors.unSelectedGreyContainer)),
-                child: SfSparkLineChart(
-                  axisLineColor: AppColors.background,
-                  color: AppColors.primary,
-                  trackball: const SparkChartTrackball(
-                      color: AppColors.primary,
-                      backgroundColor: AppColors.primary,
-                      activationMode: SparkChartActivationMode.tap),
-                  marker: const SparkChartMarker(
-                      color: AppColors.primary,
-                      borderColor: AppColors.primary,
-                      displayMode: SparkChartMarkerDisplayMode.all),
-                  labelDisplayMode: SparkChartLabelDisplayMode.all,
-                  data: const [100, 600, 200, 100, 308, 700, 500, 540],
-                ),
-              )),
+              controller.walletModel == null
+                  ? const SizedBox()
+                  : Expanded(
+                      child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                              width: .35,
+                              color: AppColors.unSelectedGreyContainer)),
+                      child: SfSparkLineChart(
+                        axisLineColor: AppColors.background,
+                        color: AppColors.primary,
+                        trackball: const SparkChartTrackball(
+                            color: AppColors.primary,
+                            backgroundColor: AppColors.primary,
+                            activationMode: SparkChartActivationMode.tap),
+                        marker: const SparkChartMarker(
+                            color: AppColors.primary,
+                            borderColor: AppColors.primary,
+                            displayMode: SparkChartMarkerDisplayMode.all),
+                        labelDisplayMode: SparkChartLabelDisplayMode.all,
+                        data: [
+                          0,
+                          ...List.generate(
+                              controller.walletModel?.sales?.length ?? 0,
+                              (index) =>
+                                  controller.walletModel?.sales?[index].total ??
+                                  0)
+                        ],
+                      ),
+                    )),
               const SizedBox(
                 height: 20,
               ),
