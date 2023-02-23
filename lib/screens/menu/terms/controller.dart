@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:nassem/main.dart';
 
-class AboutController extends GetxController {
+class TermsController extends GetxController {
   String? data;
   @override
   void onInit() {
@@ -11,7 +11,7 @@ class AboutController extends GetxController {
 
   getData() async {
     httpClient.getData(
-      url: "delivery/about",
+      url: "delivery/terms",
       dontShowLoading: true,
       onSuccess: (responseJson) {
         data = responseJson?['data'];

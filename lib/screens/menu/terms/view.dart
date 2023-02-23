@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nassem/screens/menu/terms/controller.dart';
 import 'package:nassem/utils/constants/colors.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_bar.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_image.dart';
@@ -13,33 +15,34 @@ class Terms extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppScreen(
       appBar: customAppBar(context, title: "terms".tr, titleHero: true),
-      body: SingleChildScrollView(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          SizedBox(
-            height: 20,
-          ),
-          Center(
-            child: CustomImage(
-              svgAsset: "assets/images/q.svg",
-              height: 100,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          CustomText("سياسة نسيم"),
-          SizedBox(
-            height: 10,
-          ),
-          CustomText(
-            "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدامهنا يوجد محتوى نصي، هنا يوجد محتوى فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.",
-            color: AppColors.grey,
-            fontSize: 12,
-          )
-        ],
-      )),
+      body: GetBuilder<TermsController>(
+          init: TermsController(),
+          builder: (controller) {
+            return SingleChildScrollView(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: CustomImage(
+                    svgAsset: "assets/images/logo.svg",
+                    fit: BoxFit.contain,
+                    width: Get.width / 3,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                controller.data == null
+                    ? const LinearProgressIndicator()
+                    : CustomText(
+                        controller.data ?? "",
+                        textAlign: TextAlign.justify,
+                        color: AppColors.grey,
+                        fontSize: 12,
+                      )
+              ],
+            ));
+          }),
     );
   }
 }

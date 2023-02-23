@@ -64,7 +64,7 @@ class _AllOrdersState extends State<AllOrders> with TickerProviderStateMixin {
                     const SizedBox(
                       width: 10,
                     ),
-                    const NotificationIcon(),
+                    // const NotificationIcon(),
                     const SizedBox(
                       width: 10,
                     ),

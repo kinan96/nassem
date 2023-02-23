@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nassem/public_controllers/auth_controller.dart';
+import 'package:nassem/screens/menu/about/controller.dart';
 import 'package:nassem/utils/constants/colors.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_bar.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_image.dart';
@@ -13,31 +16,34 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomAppScreen(
       appBar: customAppBar(context, title: "about".tr, titleHero: true),
-      body: SingleChildScrollView(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: CustomImage(
-              svgAsset: "assets/images/Mask group.svg",
-              fit: BoxFit.contain,
-              width: Get.width,
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const CustomText("نحن نأخذ الزهور بشكل شخصي ونجلب لك السعادة"),
-          const SizedBox(
-            height: 10,
-          ),
-          const CustomText(
-            "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدامهنا يوجد محتوى نصي، هنا يوجد محتوى فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء.",
-            color: AppColors.grey,
-            fontSize: 12,
-          )
-        ],
-      )),
+      body: GetBuilder<AboutController>(
+          init: AboutController(),
+          builder: (controller) {
+            return SingleChildScrollView(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: CustomImage(
+                    svgAsset: "assets/images/logo.svg",
+                    fit: BoxFit.contain,
+                    width: Get.width / 3,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                controller.data == null
+                    ? const LinearProgressIndicator()
+                    : CustomText(
+                        controller.data ?? "",
+                        textAlign: TextAlign.justify,
+                        color: AppColors.grey,
+                        fontSize: 12,
+                      )
+              ],
+            ));
+          }),
     );
   }
 }
