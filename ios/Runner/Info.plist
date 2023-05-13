@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Nassem</string>
+	<string>نسيم | مندوب</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +15,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>nassem</string>
+	<string>نسيم | مندوب</string>
+	<key>com.apple.security.network.client</key>
+	<true/>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -22,8 +26,65 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+		<string>baidumap</string>
+		<string>iosamap</string>
+		<string>waze</string>
+		<string>yandexmaps</string>
+		<string>yandexnavi</string>
+		<string>citymapper</string>
+		<string>mapswithme</string>
+		<string>osmandmaps</string>
+		<string>dgis</string>
+		<string>qqmap</string>
+		<string>whatsapp</string>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
+
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+
+	<key>NFCReaderUsageDescription</key>
+	<string>من أجل عمليات الدفع نحتاج لإذن الNFC</string>
+
+	<key>NSAppleMusicUsageDescription</key>
+	<string> لاضافة الوسائط مثل الفيديو والصور في حالة رفع اعلان نحتاج اذن الوصول لملفاتك </string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>نحتاج لاختيار تاريخ الحجز</string>
+	<key>NSCameraUsageDescription</key>
+	<string>نحتاج اذن الوصول للكاميرا لإضافة صور للأعلان أو تعديل صورة الملف الشخصي</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app requires contacts access to function properly.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>نحتاج الوصول لموقعك الحالى لتحديد موقع المنشأة</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>نحتاج الوصول لموقعك الحالى لتحديد موقع المنشأة</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>نحتاج الوصول لموقعك الحالى لتحديد موقع المنشأة</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>لاضافة الوسائط مثل الفيديو للاعلان نحتاج اذن الميكروفون </string>
+	<key>NSMotionUsageDescription</key>
+	<string>نحتاج الوصول لموقعك الحالى لتحديد موقع المنشأة</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>لحفظ الوسائط مثل الفيديو والصور في حالة نحتاج اذن الوصول لملفاتك </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>لاضافة الوسائط مثل الفيديو والصور في حالة رفع اعلان نحتاج اذن الوصول لملفاتك </string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>البحث الصوتى</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+    <string>dev.flutter.background.refresh</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -31,9 +92,11 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -43,9 +106,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 </dict>
 </plist>
