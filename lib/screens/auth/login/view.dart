@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/auth/confirmation/view.dart';
-import 'package:nassem/screens/home/view.dart';
 import 'package:nassem/utils/custom_helpers/validators.dart';
 import '../../../utils/custom_widgets/app_logo.dart';
 import '../../../utils/custom_widgets/custom_app_screen.dart';

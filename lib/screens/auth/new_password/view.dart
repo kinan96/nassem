@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/screens/auth/login/view.dart';
 import 'package:nassem/utils/constants/colors.dart';
 import 'package:nassem/utils/custom_helpers/validators.dart';
 import 'package:nassem/utils/custom_widgets/app_logo.dart';

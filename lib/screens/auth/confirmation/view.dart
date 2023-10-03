@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nassem/screens/auth/confirmation/controller.dart';
 import 'package:nassem/screens/auth/confirmation/resend_code.dart';
-import 'package:nassem/screens/auth/new_password/view.dart';
 import 'package:nassem/utils/constants/colors.dart';
 import 'package:nassem/utils/custom_widgets/app_logo.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_bar.dart';

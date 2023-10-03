@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nassem/public_controllers/auth_controller.dart';
 import 'package:nassem/screens/menu/about/controller.dart';
 import 'package:nassem/utils/constants/colors.dart';
 import 'package:nassem/utils/custom_widgets/custom_app_bar.dart';

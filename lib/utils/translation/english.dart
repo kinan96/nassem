@@ -1,8 +1,6 @@
 final Map<String, String> en = {
   "request_status_sent": "Request status sent successfully",
   "sent_hint": "Are you sure that the order has been delivered?",
-  "yes": "yes",
-  "no": "No",
   "attach_file": "Attach a file",
   "order_details": "Order details",
   "cause_of_stumbling": "cause of stumbling",
