@@ -24,8 +24,8 @@ class HttpClient {
     await remoteConfig.fetch();
     await remoteConfig.activate();
     String? url;
-    url = "https://naseem-api.rowadtqnee.online/public/api";
-    // remoteConfig.getString("base_url");
+    url = "https://naseem-api.rowadtqnee.online/api";
+    remoteConfig.getString("base_url");
     return HttpClient(
         baseUrl: url.isEmpty || url.contains("http") == false ? "" : url);
   }
